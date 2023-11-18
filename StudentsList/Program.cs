@@ -30,7 +30,12 @@ while (true)
         Console.WriteLine("Please Write A Minimum Score?");
         var score = int.Parse(Console.ReadLine());
         var higherstudent = await db.Student.Where(s => s.Score > score).Select(s => s.Name).ToListAsync();
+        var higherscore = await db.Student.Where(s => s.Score > score).Select(s => s.Score).ToListAsync();
         foreach (string i in higherstudent)
+        {
+            Console.WriteLine(i);
+        }
+        foreach (int i in  higherscore)
         {
             Console.WriteLine(i);
         }
@@ -41,7 +46,7 @@ while (true)
         Console.WriteLine("Please Write A Name");
         var name = Console.ReadLine();
         var student = await db.Student.Where(s => s.Name == name).FirstOrDefaultAsync();
-        if (student == null)
+        if (student != null)
         {
             db.Student.Remove(student);
             await db.SaveChangesAsync();
