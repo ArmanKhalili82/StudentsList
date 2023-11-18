@@ -29,13 +29,8 @@ while (true)
     {
         Console.WriteLine("Please Write A Minimum Score?");
         var score = int.Parse(Console.ReadLine());
-        var higherstudent = await db.Student.Where(s => s.Score > score).Select(s => s.Name).ToListAsync();
-        var higherscore = await db.Student.Where(s => s.Score > score).Select(s => s.Score).ToListAsync();
-        foreach (string i in higherstudent)
-        {
-            Console.WriteLine(i);
-        }
-        foreach (int i in  higherscore)
+        var higherstudent = await db.Student.Where(s => s.Score > score).ToListAsync();
+        foreach (var i in higherstudent)
         {
             Console.WriteLine(i);
         }
