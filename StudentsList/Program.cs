@@ -32,7 +32,7 @@ while (true)
         var higherstudent = await db.Student.Where(s => s.Score > score).ToListAsync();
         foreach (var i in higherstudent)
         {
-            Console.WriteLine("Name" + i.Name + "Score" + i.Score);
+            Console.WriteLine("Name:" + i.Name + "Score:" + i.Score);
         }
     }
 
