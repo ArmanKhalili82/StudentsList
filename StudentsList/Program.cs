@@ -32,7 +32,7 @@ while (true)
         var higherstudent = await db.Student.Where(s => s.Score > score).ToListAsync();
         foreach (var i in higherstudent)
         {
-            Console.WriteLine(i);
+            Console.WriteLine("Name" + i.Name + "Score" + i.Score);
         }
     }
 
@@ -48,8 +48,14 @@ while (true)
         }
     }
 
+    else if (command == "SearchName")
+    {
+        Console.WriteLine("Please Write A Name");
+        var name = Console.ReadLine();
+    }
+
     else
     {
-        Console.WriteLine("Error Please Write A Command Like Add, Show And Delete");
+        Console.WriteLine("Error Please Write A Command Like Add, Show, Delete And SearchName");
     }
 }
