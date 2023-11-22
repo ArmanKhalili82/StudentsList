@@ -52,6 +52,11 @@ while (true)
     {
         Console.WriteLine("Please Write A Name");
         var name = Console.ReadLine();
+        var student = await db.Student.Where(s => s.Name.Contains(name)).ToListAsync();
+        foreach (var i in student)
+        {
+            Console.WriteLine("Name:" + i.Name);
+        }
     }
 
     else
