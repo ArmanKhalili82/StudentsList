@@ -55,12 +55,36 @@ while (true)
         var students = await db.Student.Where(s => s.Name.Contains(name)).ToListAsync();
         foreach (var i in students)
         {
-            Console.WriteLine("Name:" + i.Name.ToLower());
+            Console.WriteLine("Name:" + i.Name);
         }
+    }
+
+    else if (command == "Edit")
+    {
+        Console.WriteLine("Please Enter Your Id");
+        var id = int.Parse(Console.ReadLine());
+        var studentid = await db.Student.Where(s => s.Id == id).FirstOrDefaultAsync();
+        if (studentid == null)
+        {
+            Console.WriteLine("Not Found");
+        }
+
+        else if (studentid != null)
+        {
+            Console.WriteLine("Enter Your Name");
+            var name = Console.ReadLine();
+            var studentname = db.Student.Where(s => s.Name == name).FirstOrDefault();
+            Console.WriteLine("Enter Your Score");
+            var score = int.Parse(Console.ReadLine());
+            var studentscore = db.Student.Where(s => s.Score == score).FirstOrDefault();
+            db.Student.Update(new Students() { Name = name, Score = score });
+            await db.SaveChangesAsync();
+        }
+        Console.WriteLine("Student Was Edited");
     }
 
     else
     {
-        Console.WriteLine("Error Please Write A Command Like Add, Show, Delete And SearchName");
+        Console.WriteLine("Error Please Write A Command Like Add, Show, Delete, SearchName And Edit");
     }
 }
