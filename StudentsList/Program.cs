@@ -52,8 +52,8 @@ while (true)
     {
         Console.WriteLine("Please Write A Name");
         var name = Console.ReadLine();
-        var student = await db.Student.Where(s => s.Name.Contains(name)).ToListAsync();
-        foreach (var i in student)
+        var students = await db.Student.Where(s => s.Name.Contains(name)).ToListAsync();
+        foreach (var i in students)
         {
             Console.WriteLine("Name:" + i.Name);
         }
