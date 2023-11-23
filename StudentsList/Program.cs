@@ -16,13 +16,6 @@ while (true)
         var name = Console.ReadLine();
         Console.WriteLine("Please Write A Score?");
         var score = int.Parse(Console.ReadLine());
-        var student = await db.Student.Where(s => s.Name == name).FirstOrDefaultAsync();
-        if (student == null)
-        {
-            db.Student.Add(new Students() { Name = name, Score = score });
-            await db.SaveChangesAsync();
-        }
-        Console.WriteLine("Student Was Added");
     }
 
     else if (command == "Show")
