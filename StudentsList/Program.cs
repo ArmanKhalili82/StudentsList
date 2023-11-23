@@ -17,7 +17,7 @@ while (true)
         Console.WriteLine("Please Write A Score?");
         var score = int.Parse(Console.ReadLine());
         var create = new StudentService();
-        create.Add(string name, int score, ApplicationDbContext db);
+        create.Add(name, score, db);
     }
 
     else if (command == "Show")
