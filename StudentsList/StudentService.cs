@@ -10,7 +10,7 @@ namespace StudentsList;
 
     public class StudentService
     {
-        public async Task Add(string name, int score, ApplicationDbContext db)
+        public static async Task Add(string name, int score, ApplicationDbContext db)
         {
             var student = await db.Student.Where(s => s.Name == name).FirstOrDefaultAsync();
             if (student == null)
