@@ -63,22 +63,20 @@ while (true)
     {
         Console.WriteLine("Please Enter Your Id");
         var id = int.Parse(Console.ReadLine());
-        var studentid = await db.Student.Where(s => s.Id == id).FirstOrDefaultAsync();
-        if (studentid == null)
+        var student = await db.Student.Where(s => s.Id == id).FirstOrDefaultAsync();
+        if (student == null)
         {
             Console.WriteLine("Not Found");
         }
 
-        else if (studentid != null)
+        else
         {
             Console.WriteLine("Enter Your Name");
             var name = Console.ReadLine();
-            var studentname = db.Student.Where(s => s.Name == name).FirstOrDefault();
             Console.WriteLine("Enter Your Score");
             var score = int.Parse(Console.ReadLine());
-            var studentscore = db.Student.Where(s => s.Score == score).FirstOrDefault();
-            db.Student.Update(new Students() { Name = name, Score = score });
-            await db.SaveChangesAsync();
+            student.Name = name;
+            student.Score = score;
         }
         Console.WriteLine("Student Was Edited");
     }
