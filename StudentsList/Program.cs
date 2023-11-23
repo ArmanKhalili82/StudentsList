@@ -16,6 +16,7 @@ while (true)
         var name = Console.ReadLine();
         Console.WriteLine("Please Write A Score?");
         var score = int.Parse(Console.ReadLine());
+        var create = new StudentService();
     }
 
     else if (command == "Show")
