@@ -77,6 +77,7 @@ while (true)
             var score = int.Parse(Console.ReadLine());
             student.Name = name;
             student.Score = score;
+            await db.SaveChangesAsync();
         }
         Console.WriteLine("Student Was Edited");
     }
